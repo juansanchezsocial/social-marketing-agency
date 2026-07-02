@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Marketing Agency · La Operación</title>
+<meta name="description" content="Contenido UGC de alta conversión para e-commerce. Así funciona la operación de Social Marketing Agency.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050706;
+  --bg2:#0a0d0b;
+  --panel:rgba(255,255,255,.035);
+  --panel-strong:rgba(255,255,255,.05);
+  --border:rgba(46,230,166,.16);
+  --border-soft:rgba(255,255,255,.08);
+  --green:#2EE6A6;
+  --neon:#3BFF9E;
+  --teal:#00E5C0;
+  --ink:#F4F7F5;
+  --muted:#9aa6a0;
+  --muted-2:#6f7b75;
+  --radius:18px;
+  --maxw:1200px;
+  --glow:0 0 40px rgba(46,230,166,.25);
+  --font-head:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* ---------- background layers ---------- */
+.bg-fx{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.bg-fx::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 600px at 80% -5%, rgba(46,230,166,.14), transparent 60%),
+    radial-gradient(700px 500px at 0% 20%, rgba(0,229,192,.10), transparent 60%),
+    radial-gradient(800px 700px at 50% 110%, rgba(59,255,158,.08), transparent 60%);
+}
+.grid-fx{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:
+    linear-gradient(rgba(46,230,166,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(46,230,166,.05) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 30%,#000,transparent 85%);
+  -webkit-mask-image:radial-gradient(circle at 50% 30%,#000,transparent 85%);
+}
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:110px 0;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-head);font-weight:600;font-size:12.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--green);
+  padding:7px 14px;border:1px solid var(--border);border-radius:999px;
+  background:rgba(46,230,166,.05);margin-bottom:22px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+h2.section-title{
+  font-family:var(--font-head);font-weight:800;font-size:clamp(30px,4.4vw,50px);
+  line-height:1.08;letter-spacing:-.02em;margin-bottom:18px;
+}
+.section-title .g{
+  background:linear-gradient(120deg,var(--neon),var(--teal));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.section-lead{color:var(--muted);font-size:clamp(15px,1.6vw,18px);max-width:720px;margin-bottom:52px}
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 30px;transition:.35s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(5,7,6,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-soft);padding:11px 30px;
+}
+.nav-brand{display:flex;align-items:center;gap:11px;cursor:pointer;text-decoration:none}
+.nav-brand .mark{width:34px;height:30px;filter:drop-shadow(0 0 10px rgba(46,230,166,.6))}
+.nav-brand .name{font-family:var(--font-head);font-weight:700;font-size:19px;color:#fff;letter-spacing:-.01em}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;
+  padding:8px 13px;border-radius:9px;transition:.2s;position:relative;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--neon)}
+.nav-cta{
+  font-family:var(--font-head);font-weight:600;font-size:13.5px;
+  color:#04120c!important;background:linear-gradient(120deg,var(--neon),var(--teal));
+  padding:9px 18px!important;border-radius:999px!important;box-shadow:var(--glow);
+}
+.nav-toggle{display:none;background:none;border:1px solid var(--border-soft);border-radius:9px;
+  color:var(--ink);width:42px;height:38px;font-size:20px;cursor:pointer}
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:90px;padding-bottom:60px}
+.hero-mark{width:118px;height:104px;margin-bottom:30px;filter:drop-shadow(0 0 30px rgba(46,230,166,.55));animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero h1{
+  font-family:var(--font-head);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+  font-size:clamp(42px,7vw,84px);margin-bottom:24px;
+}
+.hero h1 .g{background:linear-gradient(115deg,#fff 30%,var(--neon) 75%,var(--teal));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p.tag{font-size:clamp(17px,2.2vw,22px);color:var(--ink);font-weight:500;max-width:640px;margin-bottom:14px}
+.hero p.sub{font-size:16px;color:var(--muted);max-width:560px;margin-bottom:38px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  font-family:var(--font-head);font-weight:600;font-size:15px;text-decoration:none;cursor:pointer;
+  padding:14px 26px;border-radius:999px;transition:.25s;display:inline-flex;align-items:center;gap:9px;border:none;
+}
+.btn-primary{color:#04120c;background:linear-gradient(120deg,var(--neon),var(--teal));box-shadow:var(--glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 55px rgba(46,230,166,.45)}
+.btn-ghost{color:var(--ink);background:var(--panel);border:1px solid var(--border-soft)}
+.btn-ghost:hover{border-color:var(--green);color:var(--neon)}
+.hero-stats{display:flex;gap:38px;flex-wrap:wrap;margin-top:60px}
+.hero-stats .st{display:flex;flex-direction:column}
+.hero-stats .st b{font-family:var(--font-head);font-weight:800;font-size:clamp(26px,3.4vw,38px);
+  background:linear-gradient(120deg,var(--neon),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stats .st span{font-size:13px;color:var(--muted);letter-spacing:.02em}
+.hero-stats .sep{width:1px;background:var(--border-soft);align-self:stretch}
+/* ---------- cards ---------- */
+.grid{display:grid;gap:20px}
+.g-2{grid-template-columns:repeat(2,1fr)}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.g-4{grid-template-columns:repeat(4,1fr)}
+.card{
+  background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);
+  padding:28px;transition:.3s;position:relative;overflow:hidden;
+}
+.card:hover{border-color:var(--border);transform:translateY(-4px);background:var(--panel-strong)}
+.card .ico{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;
+  background:rgba(46,230,166,.1);border:1px solid var(--border);font-size:22px;
+}
+.card h3{font-family:var(--font-head);font-weight:600;font-size:19px;margin-bottom:9px;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:14.5px}
+.card .num{font-family:var(--font-head);font-weight:800;font-size:15px;color:var(--green);opacity:.55;margin-bottom:6px}
+/* ---------- ADN ---------- */
+.adn-hero{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.mv{background:linear-gradient(160deg,rgba(46,230,166,.08),rgba(255,255,255,.02));
+  border:1px solid var(--border);border-radius:var(--radius);padding:34px}
+.mv .lbl{font-family:var(--font-head);font-weight:700;color:var(--green);font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.mv p{font-size:16.5px;color:var(--ink);line-height:1.7}
+.mv b{color:var(--neon)}
+/* ---------- methodology ---------- */
+.method-list{display:flex;flex-direction:column;gap:14px}
+.method{
+  background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);
+  overflow:hidden;transition:.3s;
+}
+.method:hover{border-color:var(--border)}
+.method-head{display:flex;align-items:center;gap:18px;padding:22px 26px;cursor:pointer;user-select:none}
+.method-head .n{font-family:var(--font-head);font-weight:800;font-size:22px;color:var(--green);min-width:34px;opacity:.7}
+.method-head .t{font-family:var(--font-head);font-weight:600;font-size:18px;flex:1}
+.method-head .t small{display:block;color:var(--muted);font-weight:400;font-size:13.5px;font-family:var(--font-body);margin-top:3px}
+.method-head .chev{color:var(--green);font-size:22px;transition:.35s;transform-origin:center}
+.method.open .chev{transform:rotate(45deg)}
+.method-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.method-body .inner{padding:0 26px 24px 78px;color:var(--muted);font-size:14.5px}
+.method-body .inner b{color:var(--ink)}
+.hook-badge{display:inline-block;font-family:var(--font-head);font-weight:800;font-size:12px;color:#04120c;
+  background:linear-gradient(120deg,var(--neon),var(--teal));padding:3px 10px;border-radius:999px;margin-left:6px;vertical-align:middle}
+/* ---------- strategy ---------- */
+.awareness{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.aw{border-radius:var(--radius);padding:26px;border:1px solid var(--border-soft);background:var(--panel);position:relative;overflow:hidden}
+.aw .bar{position:absolute;top:0;left:0;right:0;height:4px}
+.aw.tofu .bar{background:linear-gradient(90deg,var(--teal),transparent)}
+.aw.mofu .bar{background:linear-gradient(90deg,var(--green),transparent)}
+.aw.bofu .bar{background:linear-gradient(90deg,var(--neon),transparent)}
+.aw .k{font-family:var(--font-head);font-weight:800;font-size:15px;letter-spacing:.1em;color:var(--neon);margin-bottom:6px}
+.aw h4{font-family:var(--font-head);font-weight:600;font-size:16px;margin-bottom:8px}
+.aw p{color:var(--muted);font-size:14px}
+.multiplex{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.mx{text-align:center;padding:26px 18px;border:1px dashed var(--border);border-radius:var(--radius);background:rgba(46,230,166,.03)}
+.mx .big{font-family:var(--font-head);font-weight:800;font-size:34px;background:linear-gradient(120deg,var(--neon),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.mx span{display:block;color:var(--muted);font-size:13.5px;margin-top:4px}
+/* ---------- pipeline ---------- */
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px}
+.stage{
+  background:var(--panel);border:1px solid var(--border-soft);border-radius:14px;padding:18px 16px;
+  cursor:pointer;transition:.25s;position:relative;min-height:118px;display:flex;flex-direction:column;
+}
+.stage:hover{border-color:var(--green);transform:translateY(-3px)}
+.stage.active{border-color:var(--green);background:rgba(46,230,166,.08);box-shadow:var(--glow)}
+.stage .step{font-family:var(--font-head);font-weight:800;font-size:12px;color:var(--green);opacity:.6;margin-bottom:10px}
+.stage .ic{font-size:22px;margin-bottom:8px}
+.stage h4{font-family:var(--font-head);font-weight:600;font-size:14px;line-height:1.25}
+.stage.active::after{content:"";position:absolute;bottom:-11px;left:50%;transform:translateX(-50%);
+  width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid var(--green)}
+.stage-detail{
+  margin-top:22px;background:linear-gradient(160deg,rgba(46,230,166,.07),rgba(255,255,255,.02));
+  border:1px solid var(--border);border-radius:var(--radius);padding:30px;
+  display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;
+}
+.stage-detail .big-ic{font-size:46px;line-height:1}
+.stage-detail h3{font-family:var(--font-head);font-weight:700;font-size:23px;margin-bottom:10px}
+.stage-detail p{color:var(--muted);font-size:15px;margin-bottom:16px;max-width:70ch}
+.sd-meta{display:flex;gap:30px;flex-wrap:wrap}
+.sd-meta .m{display:flex;flex-direction:column}
+.sd-meta .m .l{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);font-family:var(--font-head);font-weight:600;margin-bottom:3px}
+.sd-meta .m .v{font-size:14.5px;color:var(--ink);font-weight:500}
+/* ---------- results ---------- */
+.result-hero{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px}
+.rstat{text-align:center;padding:30px 16px;background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);transition:.3s}
+.rstat:hover{border-color:var(--border);transform:translateY(-4px)}
+.rstat .v{font-family:var(--font-head);font-weight:800;font-size:clamp(34px,4.5vw,48px);
+  background:linear-gradient(120deg,var(--neon),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.rstat .l{color:var(--muted);font-size:13.5px;margin-top:8px}
+.case{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);padding:26px;transition:.3s}
+.case:hover{border-color:var(--border);transform:translateY(-4px)}
+.case .brand{font-family:var(--font-head);font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:space-between}
+.case .cat{font-size:11px;color:var(--muted-2);font-weight:500;font-family:var(--font-body);letter-spacing:.04em;text-transform:uppercase}
+.case .metric{font-family:var(--font-head);font-weight:800;font-size:30px;margin:16px 0 4px;
+  background:linear-gradient(120deg,var(--neon),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.case p{color:var(--muted);font-size:14px}
+.case .tags{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.tag{font-size:11.5px;color:var(--green);background:rgba(46,230,166,.08);border:1px solid var(--border);padding:4px 10px;border-radius:999px;font-weight:600}
+/* ---------- clients ---------- */
+.client-wall{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px}
+.chip{font-family:var(--font-head);font-weight:600;font-size:14.5px;color:var(--muted);
+  padding:11px 20px;border:1px solid var(--border-soft);border-radius:999px;transition:.25s;background:var(--panel)}
+.chip:hover{color:var(--neon);border-color:var(--green);transform:translateY(-2px);background:rgba(46,230,166,.06)}
+/* ---------- CTA / footer ---------- */
+.cta-band{
+  text-align:center;background:linear-gradient(160deg,rgba(46,230,166,.12),rgba(0,229,192,.05));
+  border:1px solid var(--border);border-radius:28px;padding:64px 32px;position:relative;overflow:hidden;
+}
+.cta-band h2{font-family:var(--font-head);font-weight:800;font-size:clamp(28px,4.2vw,46px);letter-spacing:-.02em;margin-bottom:16px}
+.cta-band h2 .g{background:linear-gradient(120deg,var(--neon),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cta-band p{color:var(--muted);max-width:560px;margin:0 auto 30px;font-size:16px}
+footer{padding:54px 0 40px;border-top:1px solid var(--border-soft);margin-top:90px}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.foot .brand{display:flex;align-items:center;gap:11px}
+.foot .brand .mark{width:30px;height:26px;filter:drop-shadow(0 0 8px rgba(46,230,166,.5))}
+.foot .brand b{font-family:var(--font-head);font-weight:700;font-size:17px}
+.foot .meta{color:var(--muted-2);font-size:13px;text-align:right}
+.foot .meta a{color:var(--green);text-decoration:none}
+/* ---------- reveal anim ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:100%;right:16px;left:16px;flex-direction:column;
+    background:rgba(8,11,10,.97);backdrop-filter:blur(16px);border:1px solid var(--border-soft);border-radius:16px;padding:12px;gap:2px}
+  .nav-links.show{display:flex}
+  .nav-links a{padding:12px}
+  .nav-toggle{display:block}
+  .g-3,.g-4,.adn-hero,.awareness,.multiplex,.result-hero{grid-template-columns:1fr 1fr}
+  .pipe{grid-template-columns:repeat(2,1fr)}
+  section{padding:80px 0}
+}
+@media(max-width:560px){
+  .g-2,.g-3,.g-4,.adn-hero,.awareness,.multiplex,.result-hero,.pipe{grid-template-columns:1fr}
+  .stage-detail{grid-template-columns:1fr}
+  .hero-stats{gap:22px}.hero-stats .sep{display:none}
+  .foot{flex-direction:column;text-align:center}.foot .meta{text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div>
+<div class="grid-fx"></div>
+
+<!-- SVG defs (brand mark reused) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gmark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3BFF9E"/><stop offset="1" stop-color="#00E5C0"/>
+    </linearGradient>
+    <symbol id="bubble" viewBox="0 0 120 104">
+      <path d="M20 24 Q16 15 26 14 L94 8 Q104 8 102 20 L98 56 Q97 65 87 65 L48 68 L40 96 L35 66 L24 67 Q14 67 15 57 Z"
+        fill="none" stroke="url(#gmark)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-brand" href="#inicio">
+    <svg class="mark" viewBox="0 0 120 104"><use href="#bubble"/></svg>
+    <span class="name">Social</span>
+  </a>
+  <div class="nav-links" id="navlinks">
+    <a href="#adn">ADN</a>
+    <a href="#metodologia">Metodología</a>
+    <a href="#estrategia">Estrategia</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#contacto" class="nav-cta">Trabaja con nosotros</a>
+  </div>
+  <button class="nav-toggle" id="navtoggle" aria-label="Menú">☰</button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <svg class="hero-mark" viewBox="0 0 120 104"><use href="#bubble"/></svg>
+    <h1>La meta está clara:<br><span class="g">aumentamos tus ventas.</span></h1>
+    <p class="tag">Agencia especializada en contenido <b>UGC de alta conversión</b> para e-commerce.</p>
+    <p class="sub">Creamos contenido auténtico y estratégico que potencia campañas en Meta Ads, conecta con la audiencia y escala los resultados de cada marca.</p>
+    <div class="hero-actions">
+      <a href="#proceso" class="btn btn-primary">Ver cómo trabajamos →</a>
+      <a href="#resultados" class="btn btn-ghost">Resultados reales</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="st"><b data-count="100" data-suffix="+">0</b><span>Clientes e-commerce</span></div>
+      <div class="sep"></div>
+      <div class="st"><b data-count="90" data-suffix="%">0</b><span>Retención de clientes</span></div>
+      <div class="sep"></div>
+      <div class="st"><b data-count="7" data-prefix="×">0</b><span>Crecimiento en ventas*</span></div>
+      <div class="sep"></div>
+      <div class="st"><b>UGC</b><span>Nuestra especialidad</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROPUESTA DE VALOR -->
+<section id="valor">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Qué hacemos</span>
+    <h2 class="section-title reveal">Contenido que <span class="g">no parece publicidad</span>,<br>pero vende como ninguno.</h2>
+    <p class="section-lead reveal">No hacemos videos bonitos: construimos creativos diseñados para convertir. Cada pieza nace de un problema real de la audiencia y termina en una campaña rentable.</p>
+    <div class="grid g-4">
+      <div class="card reveal"><div class="ico">🎯</div><h3>Especialistas en e-commerce</h3><p>Dominamos las tendencias y comportamientos del sector para crear contenido que resuena con quien realmente compra.</p></div>
+      <div class="card reveal d1"><div class="ico">💬</div><h3>Autenticidad UGC</h3><p>Contenido real y cercano que inspira confianza y crea una relación genuina entre la marca y su audiencia.</p></div>
+      <div class="card reveal d2"><div class="ico">📈</div><h3>Resultados medibles</h3><p>Nuestro foco es el ROI en Meta Ads: más ventas, mejor ROAS y una percepción de marca más fuerte.</p></div>
+      <div class="card reveal d3"><div class="ico">⚡</div><h3>Volumen con intención</h3><p>Producción constante de creativos por marca para alimentar el testeo continuo y encontrar ganadores más rápido.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADN -->
+<section id="adn">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Nuestro ADN</span>
+    <h2 class="section-title reveal">Lo que nos <span class="g">mueve.</span></h2>
+    <div class="adn-hero">
+      <div class="mv reveal">
+        <div class="lbl">Misión</div>
+        <p>Ayudamos a empresas de e-commerce a <b>aumentar sus ventas</b> y conectar profundamente con sus audiencias, mediante contenido UGC auténtico y estratégico que potencia sus campañas en Meta Ads y refleja la esencia de sus marcas.</p>
+      </div>
+      <div class="mv reveal d1">
+        <div class="lbl">Visión</div>
+        <p>Para <b>2026</b>, ser la agencia <b>líder en América Latina</b> en contenido UGC especializado en e-commerce: aliados estratégicos reconocidos por incrementar ventas, fortalecer la conexión emocional y elevar el reconocimiento de marca.</p>
+      </div>
+    </div>
+    <p class="section-lead reveal" style="margin:44px 0 26px">Cinco valores guían cada decisión y cada creativo que producimos.</p>
+    <div class="grid g-3">
+      <div class="card reveal"><div class="num">01</div><h3>Autenticidad</h3><p>Creemos en el poder del contenido real y genuino, que refleja verdaderamente las experiencias y emociones de los usuarios.</p></div>
+      <div class="card reveal d1"><div class="num">02</div><h3>Adaptabilidad y agilidad</h3><p>Nos adaptamos rápido a las tendencias del mercado y a las necesidades cambiantes de cada cliente.</p></div>
+      <div class="card reveal d2"><div class="num">03</div><h3>Crecimiento medible</h3><p>Nuestra prioridad es un crecimiento real y cuantificable en las ventas, con tácticas de resultados claros.</p></div>
+      <div class="card reveal d1"><div class="num">04</div><h3>Creatividad con resultados</h3><p>Fomentamos la creatividad siempre enfocada en maximizar el impacto y alcanzar objetivos de venta.</p></div>
+      <div class="card reveal d2"><div class="num">05</div><h3>Excelencia</h3><p>Buscamos superar las expectativas del cliente con trabajo de alta calidad y resultados tangibles.</p></div>
+      <div class="card reveal d3" style="background:linear-gradient(160deg,rgba(46,230,166,.1),rgba(255,255,255,.02));border-color:var(--border)"><div class="ico">🇨🇴</div><h3>La opción #1 en UGC</h3><p>Nuestra meta: posicionarnos como la referencia de contenido UGC para e-commerce en Colombia y la región.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGIA -->
+<section id="metodologia">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Metodología</span>
+    <h2 class="section-title reveal">Anatomía de un <span class="g">video ganador.</span></h2>
+    <p class="section-lead reveal">Nuestra guía oficial de producción. Cada creativo se construye sobre estos principios — si un video falla en uno, pierde fuerza.</p>
+    <div class="method-list">
+      <div class="method reveal">
+        <div class="method-head"><span class="n">01</span><span class="t">Autenticidad y lenguaje<small>Se siente real, no un "copy profesional"</small></span><span class="chev">+</span></div>
+        <div class="method-body"><div class="inner">El contenido debe verse <b>natural y genuino</b>, como si la creadora usara su propio celular. Lenguaje conversacional, cercano —como hablándole a una amiga— que transmite emociones reales y toca las inseguridades del público objetivo, con palabras y visuales con los que se identifica.</div></div>
+      </div>
+      <div class="method reveal">
+        <div class="method-head"><span class="n">02</span><span class="t">El Hook <span class="hook-badge">70% del éxito</span><small>Atrapa, segmenta y conecta en los primeros 3 segundos</small></span><span class="chev">+</span></div>
+        <div class="method-body"><div class="inner">Desde el primer segundo debe tocar un <b>punto de dolor real</b>. Máximo 3 segundos: entre más corto, mayor retención. <b>Menos es más.</b> Puede ser emocional, controversial o muy directo, no siempre hablando a cámara. Debe segmentar claramente al público: <i>"Yo tengo 2 bebés y así aumenté mi producción de leche."</i></div></div>
+      </div>
+      <div class="method reveal">
+        <div class="method-head"><span class="n">03</span><span class="t">Transformación y prueba visual<small>Los videos que venden no hablan: muestran</small></span><span class="chev">+</span></div>
+        <div class="method-body"><div class="inner">Un <b>antes y después en los primeros 6 segundos</b>. La transformación debe ser evidente, clara y exageradamente visible, reforzada con <b>testimonios reales</b> que aportan credibilidad.</div></div>
+      </div>
+      <div class="method reveal">
+        <div class="method-head"><span class="n">04</span><span class="t">Modo de uso<small>Cuando el producto necesita educación</small></span><span class="chev">+</span></div>
+        <div class="method-body"><div class="inner">Mostrar cómo se usa aumenta la conversión, especialmente cuando el producto es <b>nuevo</b>, no tiene competencia directa o requiere educación para entender su valor.</div></div>
+      </div>
+      <div class="method reveal">
+        <div class="method-head"><span class="n">05</span><span class="t">Visuales, planos y tomas de apoyo<small>El dinamismo sostiene la retención</small></span><span class="chev">+</span></div>
+        <div class="method-body"><div class="inner">Muchas <b>tomas de apoyo únicas</b> por brief, clips de máximo 1.5 segundos, siempre coherentes con lo que se dice. Usamos <b>pantalla dividida</b> cuando suma: creadora arriba / producto abajo, o foto ganadora al lado de la creadora.</div></div>
+      </div>
+      <div class="method reveal">
+        <div class="method-head"><span class="n">06</span><span class="t">Estrategia y análisis de mercado<small>No crear por crear: crear con intención</small></span><span class="chev">+</span></div>
+        <div class="method-body"><div class="inner">Estudiamos <b>creativos ganadores</b> de otros nichos, hablamos con clientes reales y buscamos comentarios para captar su lenguaje, sus miedos y los cambios que notaron. Construimos guiones desde <b>problemas reales</b>, no desde la imaginación.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTRATEGIA -->
+<section id="estrategia">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Estrategia de contenido</span>
+    <h2 class="section-title reveal">Una fuente <span class="g">casi inagotable</span> de creativos.</h2>
+    <p class="section-lead reveal">Por cada producto investigamos a fondo y mapeamos todos los ángulos de venta y puntos de dolor que puede abordar. De ahí sale un banco de ideas que se ejecuta en múltiples formatos y para cada etapa del funnel.</p>
+
+    <div class="grid g-2" style="margin-bottom:26px">
+      <div class="card reveal"><div class="ico">🔬</div><h3>Investigación de producto</h3><p>Analizamos la fórmula, los beneficios y el contexto real de cada producto para entender de verdad qué problema resuelve y para quién.</p></div>
+      <div class="card reveal d1"><div class="ico">🗺️</div><h3>Mapeo de ángulos y dolores</h3><p>Convertimos esa investigación en un mapa de <b>ángulos de venta</b> y <b>puntos de dolor</b>: cada uno es la semilla de decenas de creativos distintos.</p></div>
+    </div>
+
+    <h3 style="font-family:var(--font-head);font-weight:600;font-size:20px;margin-bottom:4px" class="reveal">Contenido para cada nivel de conciencia</h3>
+    <p style="color:var(--muted);font-size:14.5px;max-width:640px" class="reveal">Producimos piezas según qué tan consciente es la audiencia del problema y de la solución, cubriendo todo el embudo.</p>
+    <div class="awareness">
+      <div class="aw tofu reveal"><div class="bar"></div><div class="k">TOFU</div><h4>Descubrimiento</h4><p>Audiencia con el problema pero sin buscar solución. Creativos que educan y despiertan la necesidad.</p></div>
+      <div class="aw mofu reveal d1"><div class="bar"></div><div class="k">MOFU</div><h4>Consideración</h4><p>Ya buscan opciones. Contenido que compara, demuestra y posiciona al producto como la mejor alternativa.</p></div>
+      <div class="aw bofu reveal d2"><div class="bar"></div><div class="k">BOFU</div><h4>Decisión</h4><p>Listos para comprar. Prueba social, oferta y urgencia para cerrar la venta.</p></div>
+    </div>
+
+    <div class="multiplex">
+      <div class="mx reveal"><div class="big">∞</div><span>Múltiples ángulos por producto</span></div>
+      <div class="mx reveal d1"><div class="big">◎</div><span>Múltiples formatos por ángulo</span></div>
+      <div class="mx reveal d2"><div class="big">◍</div><span>Múltiples avatars y creadoras</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO / PIPELINE -->
+<section id="proceso">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Cómo trabajamos</span>
+    <h2 class="section-title reveal">De la idea al <span class="g">creativo ganador.</span></h2>
+    <p class="section-lead reveal">Un proceso claro de punta a punta. Haz clic en cada etapa para ver qué sucede.</p>
+    <div class="pipe" id="pipe"></div>
+    <div class="stage-detail reveal" id="stageDetail"></div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>El equipo</span>
+    <h2 class="section-title reveal">Personas detrás de <span class="g">cada resultado.</span></h2>
+    <p class="section-lead reveal">Un equipo especializado donde cada rol empuja el creativo hacia la conversión.</p>
+    <div class="grid g-3">
+      <div class="card reveal"><div class="ico">🧭</div><h3>Gerencia de cuentas</h3><p>El puente con el cliente: entiende objetivos, ordena las entregas y garantiza que todo salga a tiempo y con estándar.</p></div>
+      <div class="card reveal d1"><div class="ico">✍️</div><h3>Copys & estrategas</h3><p>Investigan el producto, mapean ángulos y escriben los guiones desde problemas reales de la audiencia.</p></div>
+      <div class="card reveal d2"><div class="ico">🎨</div><h3>Diseño</h3><p>Traducen cada ángulo en piezas gráficas y creativos estáticos alineados a la marca.</p></div>
+      <div class="card reveal d1"><div class="ico">🎬</div><h3>Creadoras UGC</h3><p>Le ponen rostro y voz auténtica al contenido, grabando como si le hablaran a una amiga.</p></div>
+      <div class="card reveal d2"><div class="ico">✂️</div><h3>Edición</h3><p>Montan hooks, tomas de apoyo y ritmo para maximizar retención y conversión.</p></div>
+      <div class="card reveal d3"><div class="ico">📊</div><h3>Análisis & media</h3><p>Miden cada creativo en Meta Ads, detectan ganadores y guían el escalado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Servicios</span>
+    <h2 class="section-title reveal">Todo lo que <span class="g">entregamos.</span></h2>
+    <div class="grid g-3">
+      <div class="card reveal"><div class="ico">🎥</div><h3>Guiones para Reels & Meta Ads</h3><p>Briefs de video listos para rodar: hook, cuerpo, CTA y guía audiovisual completa.</p></div>
+      <div class="card reveal d1"><div class="ico">🖼️</div><h3>Briefs de diseño</h3><p>Piezas gráficas y estáticas con overlays, formato y estilo alineados a la marca.</p></div>
+      <div class="card reveal d2"><div class="ico">✨</div><h3>Creativos estáticos</h3><p>Diseños finales adaptados a la voz de cada marca, listos para pauta.</p></div>
+      <div class="card reveal d1"><div class="ico">🗺️</div><h3>Mapas de ángulos por producto</h3><p>Investigación estratégica que revela todos los ángulos y dolores que un producto puede vender.</p></div>
+      <div class="card reveal d2"><div class="ico">🎞️</div><h3>Producción UGC</h3><p>Rodaje con creadoras reales y banco de tomas de apoyo para cada campaña.</p></div>
+      <div class="card reveal d3"><div class="ico">📈</div><h3>Análisis & optimización</h3><p>Revisión de creativos en Meta Ads, detección de ganadores y decisiones de escalado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section id="resultados">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Resultados reales</span>
+    <h2 class="section-title reveal">Los números <span class="g">hablan.</span></h2>
+    <p class="section-lead reveal">Crecimiento medido en Meta Ads Manager: más ROAS, más CTR, más ventas. Estos son algunos de nuestros casos.</p>
+    <div class="result-hero">
+      <div class="rstat reveal"><div class="v" data-count="100" data-suffix="+">0</div><div class="l">Clientes e-commerce</div></div>
+      <div class="rstat reveal d1"><div class="v" data-count="750" data-prefix="$" data-suffix="M">0</div><div class="l">Ventas/mes de un solo cliente</div></div>
+      <div class="rstat reveal d2"><div class="v" data-count="3" data-suffix="%">0</div><div class="l">CTR alcanzado (desde 1.6%)</div></div>
+      <div class="rstat reveal d3"><div class="v" data-count="90" data-suffix="%">0</div><div class="l">Retención de clientes</div></div>
+    </div>
+    <div class="grid g-3">
+      <div class="case reveal">
+        <div class="brand">Avelina <span class="cat">Cosmética</span></div>
+        <div class="metric">CTR 1.6% → 3.5%</div>
+        <p>Ventas de $250M a $750M mensuales en pocas semanas.</p>
+        <div class="tags"><span class="tag">×3 ventas</span><span class="tag">+CTR</span></div>
+      </div>
+      <div class="case reveal d1">
+        <div class="brand">Beast Bites <span class="cat">Snacks</span></div>
+        <div class="metric">×7</div>
+        <p>De $50M a $350M en menos de un mes.</p>
+        <div class="tags"><span class="tag">&lt; 1 mes</span><span class="tag">escalado</span></div>
+      </div>
+      <div class="case reveal d2">
+        <div class="brand">Klout Home <span class="cat">Hogar</span></div>
+        <div class="metric">×2.25</div>
+        <p>De $400M a $900M mensuales.</p>
+        <div class="tags"><span class="tag">ROAS estable</span></div>
+      </div>
+      <div class="case reveal">
+        <div class="brand">Fem / Fem Mom <span class="cat">Bienestar femenino</span></div>
+        <div class="metric">ROAS +</div>
+        <p>Campañas UGC sostenidas con ROAS por encima del punto de equilibrio.</p>
+        <div class="tags"><span class="tag">UGC</span><span class="tag">Meta Ads</span></div>
+      </div>
+      <div class="case reveal d1">
+        <div class="brand">Tanik · Wander <span class="cat">Suplementos · Calzado</span></div>
+        <div class="metric">Rentable</div>
+        <p>Creativos escalando ventas con métricas reales de Meta Ads Manager.</p>
+        <div class="tags"><span class="tag">multi-ángulo</span></div>
+      </div>
+      <div class="case reveal d2">
+        <div class="brand">Punto Cero · Biobooster <span class="cat">Automotriz · Bienestar</span></div>
+        <div class="metric">Crecimiento</div>
+        <p>Nichos distintos, el mismo método: hook potente, autenticidad y testeo.</p>
+        <div class="tags"><span class="tag">ROAS</span><span class="tag">CTR</span></div>
+      </div>
+    </div>
+    <p style="color:var(--muted-2);font-size:12.5px;margin-top:18px" class="reveal">*Cifras ilustrativas de casos reales de la agencia, medidas en Meta Ads Manager. El crecimiento varía según producto, oferta y mercado.</p>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section id="clientes">
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Confían en nosotros</span>
+    <h2 class="section-title reveal">Más de <span class="g">100 marcas</span> nos eligen.</h2>
+    <div class="client-wall">
+      <span class="chip reveal">Avelina</span><span class="chip reveal">Beast Bites</span><span class="chip reveal">Klout Home</span>
+      <span class="chip reveal">Fem</span><span class="chip reveal">The Gummy Box</span><span class="chip reveal">Elite Nutrition</span>
+      <span class="chip reveal">Dante</span><span class="chip reveal">Coraje</span><span class="chip reveal">Biobooster</span>
+      <span class="chip reveal">Golí Nutrition</span><span class="chip reveal">Dermahemp</span><span class="chip reveal">Aura</span>
+      <span class="chip reveal">Nello Supercalm</span><span class="chip reveal">Hairebel</span><span class="chip reveal">Wander</span>
+      <span class="chip reveal">Tanik</span><span class="chip reveal">Punto Cero</span><span class="chip reveal">Dissan</span>
+      <span class="chip reveal">Growbrush</span><span class="chip reveal">Studio Glows</span><span class="chip reveal">Casa Tuning</span>
+      <span class="chip reveal">Focus Supplements</span><span class="chip reveal">JoyKids</span><span class="chip reveal">Cormetex</span>
+      <span class="chip reveal">Colombia Offroad</span><span class="chip reveal">Maxi Confort</span><span class="chip reveal">La Clásica</span>
+      <span class="chip reveal">Futu Pro</span><span class="chip reveal">MDT Modelarte</span><span class="chip reveal">+ muchas más</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + FOOTER -->
+<section id="contacto" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <svg class="hero-mark" style="width:70px;height:62px;margin-bottom:18px" viewBox="0 0 120 104"><use href="#bubble"/></svg>
+      <h2>¿Listo para <span class="g">aumentar tus ventas?</span></h2>
+      <p>Hablemos de tu marca. Construimos el contenido UGC que tu e-commerce necesita para escalar en Meta Ads.</p>
+      <a href="https://instagram.com/social.marketingagency" target="_blank" rel="noopener" class="btn btn-primary">Escríbenos en Instagram →</a>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap foot">
+      <div class="brand">
+        <svg class="mark" viewBox="0 0 120 104"><use href="#bubble"/></svg>
+        <b>Social Marketing Agency</b>
+      </div>
+      <div class="meta">
+        Social Ecom Agency LLC · UGC para e-commerce · 2026<br>
+        <a href="https://instagram.com/social.marketingagency" target="_blank" rel="noopener">@social.marketingagency</a>
+      </div>
+    </div>
+  </footer>
+</section>
+
+<script>
+/* ---------- pipeline data ---------- */
+const STAGES=[
+  {ic:"📋",t:"Brief inicial",who:"Cliente + Gerencia",out:"Break-even ROAS, CPA, AOV y ángulos que funcionan",
+   d:"Arrancamos entendiendo el negocio: márgenes, punto de equilibrio del ROAS, costo por adquisición, valor de orden promedio y qué ángulos ya funcionan o no. Esa base define toda la estrategia."},
+  {ic:"🔬",t:"Investigación & ángulos",who:"Copys & estrategas",out:"Mapa de ángulos de venta y puntos de dolor",
+   d:"Investigamos el producto a fondo y mapeamos todos los ángulos y dolores que puede abordar. De aquí sale la fuente casi inagotable de ideas para creativos."},
+  {ic:"✍️",t:"Guiones & diseños",who:"Copys + Diseño",out:"Briefs de video y de diseño listos",
+   d:"Traducimos los ángulos en guiones para Reels/Meta Ads y en briefs de diseño, cubriendo distintos niveles de conciencia, formatos y avatars."},
+  {ic:"✅",t:"Aprobación",who:"Gerencia + Cliente",out:"Brief aprobado para rodaje",
+   d:"Cada brief se revisa y aprueba antes de producir, asegurando que el ángulo, el tono y la marca estén alineados."},
+  {ic:"🎬",t:"Rodaje",who:"Creadoras UGC",out:"Material crudo + tomas de apoyo",
+   d:"Las creadoras graban el contenido de forma auténtica, con un banco de tomas de apoyo únicas de máximo 1.5s por brief."},
+  {ic:"✂️",t:"Edición",who:"Editores",out:"Creativo final montado",
+   d:"Montamos hook, transformación, tomas de apoyo y ritmo para maximizar la retención y la conversión de cada pieza."},
+  {ic:"📦",t:"Entrega",who:"Gerencia",out:"Creativos organizados por prioridad",
+   d:"Entregamos los creativos finalizados organizados por prioridad, listos para que el cliente los suba a pauta."},
+  {ic:"🚀",t:"Publicación en Meta",who:"Cliente / Media",out:"Campañas activas",
+   d:"Los creativos entran a Meta Ads, donde el contenido UGC empieza a trabajar frente a la audiencia objetivo."},
+  {ic:"📊",t:"Análisis & ganadores",who:"Análisis & media",out:"Creativos ganadores identificados",
+   d:"Medimos cada creativo (ROAS, CTR, frecuencia, costo por resultado) y detectamos los ganadores frente al punto de equilibrio."},
+  {ic:"📈",t:"Escalado",who:"Todo el equipo",out:"Más ventas, más iteración",
+   d:"Escalamos los ganadores y realimentamos el mapa de ángulos con lo aprendido: el ciclo vuelve a empezar, cada vez más afinado."}
+];
+const pipe=document.getElementById('pipe'),detail=document.getElementById('stageDetail');
+function renderDetail(i){
+  const s=STAGES[i];
+  detail.innerHTML=`<div class="big-ic">${s.ic}</div><div><h3>${s.t}</h3><p>${s.d}</p>
+    <div class="sd-meta"><div class="m"><span class="l">Quién lo hace</span><span class="v">${s.who}</span></div>
+    <div class="m"><span class="l">Entregable</span><span class="v">${s.out}</span></div>
+    <div class="m"><span class="l">Etapa</span><span class="v">${i+1} de ${STAGES.length}</span></div></div></div>`;
+}
+STAGES.forEach((s,i)=>{
+  const el=document.createElement('div');el.className='stage'+(i===0?' active':'');
+  el.innerHTML=`<div class="step">${String(i+1).padStart(2,'0')}</div><div class="ic">${s.ic}</div><h4>${s.t}</h4>`;
+  el.addEventListener('click',()=>{document.querySelectorAll('.stage').forEach(x=>x.classList.remove('active'));el.classList.add('active');renderDetail(i);});
+  pipe.appendChild(el);
+});
+renderDetail(0);
+
+/* ---------- methodology accordion ---------- */
+document.querySelectorAll('.method-head').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const m=h.parentElement,body=m.querySelector('.method-body'),open=m.classList.contains('open');
+    document.querySelectorAll('.method').forEach(x=>{x.classList.remove('open');x.querySelector('.method-body').style.maxHeight=null;});
+    if(!open){m.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
+  });
+});
+
+/* ---------- nav scroll / mobile ---------- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>30);});
+document.getElementById('navtoggle').addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('show'));
+document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('show')));
+
+/* ---------- active section highlight ---------- */
+const navA=[...document.querySelectorAll('#navlinks a')].filter(a=>a.getAttribute('href').startsWith('#'));
+const secObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}});},{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id],header[id]').forEach(s=>secObs.observe(s));
+
+/* ---------- reveal on scroll ---------- */
+const rev=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>rev.observe(el));
+
+/* ---------- animated counters ---------- */
+function animate(el){
+  const target=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  const dur=1400,start=performance.now();
+  function tick(now){
+    const p=Math.min((now-start)/dur,1),ease=1-Math.pow(1-p,3);
+    let val=target*ease;
+    val=(target%1!==0)?val.toFixed(2):Math.round(val);
+    el.textContent=pre+val+suf;
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){animate(e.target);cObs.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+</script>
+</body>
+</html>
